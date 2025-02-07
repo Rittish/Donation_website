@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { DecoratedHeader } from "../DecoratedHeader/DecoratedHeader.jsx";
 import { Menu } from "../Menu/Menu.jsx";
 import "./GiveAwayNavHeader.scss";
@@ -34,6 +35,12 @@ export function GiveAwayNavHeader() {
               <h3>4</h3>
               <p>Book courier</p>
             </div>
+          </div>
+          {/* Admin Dashboard Link */}
+          <div className="GiveAwayNavHeader-admin-link">
+            <Link to="/admin" className="admin-link">
+              Admin Dashboard
+            </Link>
           </div>
         </div>
       </div>

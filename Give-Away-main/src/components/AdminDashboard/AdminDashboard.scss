@@ -1,0 +1,48 @@
+.admin-dashboard {
+    padding: 20px;
+    background-color: #f5f5f5;
+  
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+  
+    .error {
+      color: red;
+      text-align: center;
+    }
+  
+    .form-data-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+  
+    .form-data-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      transition: transform 0.3s;
+  
+      &:hover {
+        transform: translateY(-10px);
+      }
+  
+      h2 {
+        margin-bottom: 15px;
+        color: #007BFF;
+      }
+  
+      p {
+        margin: 5px 0;
+  
+        strong {
+          color: #555;
+        }
+      }
+    }
+  }

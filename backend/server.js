@@ -4,37 +4,34 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 const app = express();
-const PORT = procss.env.PORT || 5000;
-
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(bodyParser.json());
-
 
 mongoose.connect('mongodb://localhost:27017/donation-data')
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-  const formDataSchema = new mongoose.Schema({
-    type: String,
-    bags: Number,
-    helpGroups: [String],
-    location: String,
-    organisation: String,
-    street: String,
-    city: String,
-    postcode: String,
-    phone: String,
-    day: String,
-    time: String,
-    notes: String,
-  }, { collection: 'donation_data_fetched' });
-  
-  const FormData = mongoose.model('FormData', formDataSchema);
+const formDataSchema = new mongoose.Schema({
+  type: String,
+  bags: Number,
+  helpGroups: [String],
+  location: String,
+  organisation: String,
+  street: String,
+  city: String,
+  postcode: String,
+  phone: String,
+  day: String,
+  time: String,
+  notes: String,
+}, { collection: 'donation_data_fetched' });
+
+const FormData = mongoose.model('FormData', formDataSchema);
 
 app.post('/api/saveFormData', async (req, res) => {
   const formData = req.body;
-
 
   if (!formData) {
     return res.status(400).json({ message: 'No form data provided' });
@@ -51,6 +48,16 @@ app.post('/api/saveFormData', async (req, res) => {
   }
 });
 
+// New Endpoint to Fetch Form Data for Admin
+app.get('/api/getFormData', async (req, res) => {
+  try {
+    const data = await FormData.find({});
+    res.status(200).json(data);
+  } catch (error) {
+    console.error('Error fetching form data:', error);
+    res.status(500).json({ message: 'Failed to fetch form data' });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

@@ -1,17 +1,32 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { GiveAwayForm } from "./components/GiveAwayForm/GiveAwayForm";
-import { AdminDashboard } from "./components/AdminDashboard/AdminDashboard";
+import React from 'react';
+import './App.scss';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Home } from './pages/home.jsx';
+import { GiveAway } from './pages/give-away.jsx';
+import { LogIn } from './pages/login.jsx';
+import { LogOut } from './pages/logout.jsx';
+import { SignUp } from './pages/sign-up.jsx';
+import { Cta } from "./components/Cta/Cta.jsx";
+import { AdminDashboard } from "./components/AdminDashboard/AdminDashboard.jsx";
+import { GiveAwayNavHeader } from "./components/GiveAwayNavHeader/GiveAwayNavHeader.jsx";
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<GiveAwayForm />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-      </Routes>
-    </Router>
-  );
+export default function App() {
+    return (
+        <Router>
+            {/* Navigation Header */}
+            <GiveAwayNavHeader />
+
+            {/* Define Routes */}
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/give-away' element={<GiveAway />} />
+                <Route path='/login' element={<LogIn />} />
+                <Route path='/logout' element={<LogOut />} />
+                <Route path='/sign-up' element={<SignUp />} />
+                <Route path='/Cta' element={<Cta />} />
+                {/* New Admin Route */}
+                <Route path='/admin' element={<AdminDashboard />} />
+            </Routes>
+        </Router>
+    );
 }
-
-export default App;

@@ -36,12 +36,7 @@ export function GiveAwayNavHeader() {
               <p>Book courier</p>
             </div>
           </div>
-          {/* Admin Dashboard Link */}
-          <div className="GiveAwayNavHeader-admin-link">
-            <Link to="/admin" className="admin-link">
-              Admin Dashboard
-            </Link>
-          </div>
+         
         </div>
       </div>
     </div>
